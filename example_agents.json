@@ -1,0 +1,46 @@
+{
+  "agents": [
+    {
+      "name": "ARCHITECT_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/ARCHITECT_AGENT",
+      "role": "Chief Architect & System Designer",
+      "category": "executive",
+      "zellij_session_name": "architect_agent"
+    },
+    {
+      "name": "MAIN_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/MAIN_AGENT",
+      "role": "CTO & Development Driver",
+      "category": "executive",
+      "zellij_session_name": "main_agent"
+    },
+    {
+      "name": "METSUKE_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/METSUKE_AGENT",
+      "role": "Feature Engineering Specialist",
+      "category": "core_domain",
+      "zellij_session_name": "metsuke_agent"
+    },
+    {
+      "name": "MUSHIN_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/MUSHIN_AGENT",
+      "role": "Deep Learning Specialist",
+      "category": "core_domain",
+      "zellij_session_name": "mushin_agent"
+    },
+    {
+      "name": "DATABASE_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/DATABASE_AGENT",
+      "role": "Database & Data Pipeline Specialist",
+      "category": "infrastructure",
+      "zellij_session_name": "database_agent"
+    },
+    {
+      "name": "TESTING_AGENT",
+      "directory_path": "/path/to/project/SUBAGENTS/TESTING_AGENT",
+      "role": "Testing & Quality Assurance",
+      "category": "support",
+      "zellij_session_name": "testing_agent"
+    }
+  ]
+}
