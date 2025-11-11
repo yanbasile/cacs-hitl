@@ -2,28 +2,24 @@
   "agents": [
     {
       "name": "MAIN_AGENT",
-      "directory_path": "/home/g14/XDEVX/PROJETS/SPECIAL_PROJECTS/dev-cacs/cacs-hitl/SUBAGENTS/MAIN_AGENT",
       "role": "Founder, Manager and Coder of Central Glue Logic",
       "category": "core",
       "zellij_session_name": "main_agent"
     },
     {
       "name": "TEST_AGENT",
-      "directory_path": "/home/g14/XDEVX/PROJETS/SPECIAL_PROJECTS/dev-cacs/cacs-hitl/SUBAGENTS/TEST_AGENT",
       "role": "Testing Specialist - System Validation & Quality Assurance",
       "category": "support",
       "zellij_session_name": "test_agent"
     },
     {
       "name": "DATABASE_AGENT",
-      "directory_path": "/home/g14/XDEVX/PROJETS/SPECIAL_PROJECTS/dev-cacs/cacs-hitl/SUBAGENTS/DATABASE_AGENT",
       "role": "Database Specialist - Schema, Migrations & Data Management",
       "category": "infrastructure",
       "zellij_session_name": "database_agent"
     },
     {
       "name": "UI_AGENT",
-      "directory_path": "/home/g14/XDEVX/PROJETS/SPECIAL_PROJECTS/dev-cacs/cacs-hitl/SUBAGENTS/UI_AGENT",
       "role": "Web UI Specialist - Frontend Development & User Experience",
       "category": "infrastructure",
       "zellij_session_name": "ui_agent"

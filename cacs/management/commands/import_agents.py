@@ -3,10 +3,14 @@ Management command to import agents from JSON file
 
 Usage:
     python manage.py import_agents --json-file test_agents.json
+
+Note: directory_path is automatically calculated from SUBAGENTS_DIR + agent name.
+You only need to specify: name, role, category, zellij_session_name in JSON.
 """
 import json
 import os
 from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
 from cacs.models import Agent
 
 
@@ -63,6 +67,11 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING("Existing agents cleared"))
                 self.stdout.write("")
 
+        # Get SUBAGENTS_DIR from settings
+        subagents_dir = settings.SUBAGENTS_DIR
+        self.stdout.write(f"Using SUBAGENTS_DIR: {subagents_dir}")
+        self.stdout.write("")
+
         # Validate and import each agent
         errors = []
         success_count = 0
@@ -70,6 +79,10 @@ class Command(BaseCommand):
         for idx, agent_data in enumerate(agents_data, 1):
             agent_name = agent_data.get('name', f'UNKNOWN_{idx}')
             self.stdout.write(f"[{idx}/{len(agents_data)}] Processing: {agent_name}")
+
+            # Calculate directory_path automatically from SUBAGENTS_DIR + agent name
+            directory_path = os.path.join(subagents_dir, agent_name)
+            agent_data['directory_path'] = directory_path
 
             # Validate required fields (STRICT)
             validation_errors = self._validate_agent(agent_data)
@@ -90,7 +103,7 @@ class Command(BaseCommand):
                 agent, created = Agent.objects.update_or_create(
                     name=agent_data['name'],
                     defaults={
-                        'directory_path': agent_data['directory_path'],
+                        'directory_path': directory_path,
                         'role': agent_data['role'],
                         'category': agent_data['category'],
                         'zellij_session_name': agent_data['zellij_session_name'],
@@ -130,11 +143,14 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS("🎉 Import completed successfully!"))
 
     def _validate_agent(self, agent_data):
-        """Validate agent data with STRICT requirements"""
+        """Validate agent data with STRICT requirements
+
+        Note: directory_path is calculated automatically, not required in JSON
+        """
         errors = []
 
-        # Required fields
-        required_fields = ['name', 'directory_path', 'role', 'category', 'zellij_session_name']
+        # Required fields in JSON file (directory_path is auto-calculated)
+        required_fields = ['name', 'role', 'category', 'zellij_session_name']
 
         for field in required_fields:
             if field not in agent_data:
@@ -153,12 +169,16 @@ class Command(BaseCommand):
         if not all(c.isalnum() or c == '_' for c in name):
             errors.append(f"Agent name can only contain letters, numbers, and underscores: '{name}'")
 
-        # Validate directory path exists
-        directory_path = agent_data['directory_path']
-        if not os.path.isabs(directory_path):
-            errors.append(f"Directory path must be absolute: '{directory_path}'")
+        # Validate directory path exists (now auto-calculated from SUBAGENTS_DIR + name)
+        directory_path = agent_data.get('directory_path')
+        if not directory_path:
+            errors.append("Directory path not calculated (internal error)")
+            return errors
+
         if not os.path.exists(directory_path):
             errors.append(f"Directory does not exist: '{directory_path}'")
+            errors.append(f"Expected agent directory at: {directory_path}")
+            errors.append(f"Create it with: mkdir -p {directory_path}/inbox {directory_path}/.triggers")
 
         # Validate inbox directory exists
         inbox_path = os.path.join(directory_path, 'inbox')
