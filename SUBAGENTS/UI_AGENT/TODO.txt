@@ -1,0 +1,32 @@
+# TODO List for UI_AGENT
+# Max 150 lines - Protocol Compliance Required
+
+## Current Phase: Web UI Development
+
+### In Progress
+- [ ] Design agent list view
+- [ ] Create agent detail page
+- [ ] Implement activate button
+
+### Pending
+- [ ] Add dashboard with metrics
+- [ ] Create communications inbox UI
+- [ ] Style with Bootstrap 5
+
+### Blocked
+- None currently
+
+### Completed (Recent)
+- [x] UI requirements gathered
+
+---
+
+## Notes
+- UI_AGENT handles all web interface
+- Uses Bootstrap 5 for styling
+- Ensures responsive design
+
+---
+
+Last updated: 2025-11-11
+Lines: 29/150

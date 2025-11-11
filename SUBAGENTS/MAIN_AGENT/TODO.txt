@@ -1,0 +1,30 @@
+# TODO List for MAIN_AGENT
+# Max 150 lines - Protocol Compliance Required
+
+## Current Phase: CACS Proof of Concept
+
+### In Progress
+- [ ] Design central glue logic for CACS
+- [ ] Coordinate between agents
+- [ ] Monitor system integration
+
+### Pending
+- [ ] Review architecture decisions
+- [ ] Test communication protocol
+- [ ] Validate agent coordination
+
+### Completed (Recent)
+- [x] Initial project setup completed
+- [x] Agent roles defined
+
+---
+
+## Notes
+- MAIN_AGENT is the founder and manager
+- Responsible for central glue logic
+- Coordinates with TEST, DATABASE, and UI agents
+
+---
+
+Last updated: 2025-11-11
+Lines: 27/150
