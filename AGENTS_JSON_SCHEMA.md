@@ -17,7 +17,9 @@ The `test_agents.json` (or your custom agents file) defines the agents in your C
 | `name` | string | Agent name (UPPERCASE, underscores allowed) | `"MAIN_AGENT"` |
 | `role` | string | Agent's role/responsibility | `"CTO & Development Driver"` |
 | `category` | string | Agent category | `"core"`, `"infrastructure"`, `"support"` |
-| `zellij_session_name` | string | Zellij session name (lowercase) | `"main_agent"` |
+| `zellij_session_name` | string | Zellij session name (should match agent name) | `"MAIN_AGENT"` |
+
+**Note**: `zellij_session_name` should match `name` exactly for clarity. CACS uses UPPERCASE to emphasize these are system-level agents in a special operational mode.
 
 ### Optional Fields
 
@@ -40,13 +42,13 @@ None currently. All fields above are required.
       "name": "MAIN_AGENT",
       "role": "Founder, Manager and Coder of Central Glue Logic",
       "category": "core",
-      "zellij_session_name": "main_agent"
+      "zellij_session_name": "MAIN_AGENT"
     },
     {
       "name": "TEST_AGENT",
       "role": "Testing Specialist - System Validation & Quality Assurance",
       "category": "support",
-      "zellij_session_name": "test_agent"
+      "zellij_session_name": "TEST_AGENT"
     }
   ]
 }
@@ -74,9 +76,10 @@ None currently. All fields above are required.
 - Common values: `core`, `infrastructure`, `support`, `executive`
 
 ### Zellij Session Name
-- ✅ Must be lowercase
-- ✅ Typically the agent name in lowercase
-- Recommended format: `agent_name` (lowercase with underscores)
+- ✅ Should match the agent name exactly (UPPERCASE)
+- ✅ Must match exactly what you use with `zellij --session <name>`
+- Recommended format: Same as agent name (e.g., `MAIN_AGENT`)
+- **Rationale**: UPPERCASE emphasizes these are system-level agents in CACS special mode
 
 ---
 
@@ -159,7 +162,7 @@ SUBAGENTS_DIR=/path/to/your/project/SUBAGENTS
   "directory_path": "/home/alice/projects/cacs-hitl/SUBAGENTS/MAIN_AGENT",
   "role": "...",
   "category": "core",
-  "zellij_session_name": "main_agent"
+  "zellij_session_name": "MAIN_AGENT"
 }
 ```
 
@@ -174,7 +177,7 @@ SUBAGENTS_DIR=/path/to/your/project/SUBAGENTS
   "name": "MAIN_AGENT",
   "role": "...",
   "category": "core",
-  "zellij_session_name": "main_agent"
+  "zellij_session_name": "MAIN_AGENT"
 }
 ```
 
@@ -245,7 +248,7 @@ If you have an old `agents.json` with `directory_path` fields:
   "directory_path": "/home/user/cacs-hitl/SUBAGENTS/MAIN_AGENT",
   "role": "...",
   "category": "core",
-  "zellij_session_name": "main_agent"
+  "zellij_session_name": "MAIN_AGENT"
 }
 ```
 
@@ -257,7 +260,7 @@ The `directory_path` field will be **ignored** and recalculated.
   "name": "MAIN_AGENT",
   "role": "...",
   "category": "core",
-  "zellij_session_name": "main_agent"
+  "zellij_session_name": "MAIN_AGENT"
 }
 ```
 

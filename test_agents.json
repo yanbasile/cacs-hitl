@@ -4,25 +4,25 @@
       "name": "MAIN_AGENT",
       "role": "Founder, Manager and Coder of Central Glue Logic",
       "category": "core",
-      "zellij_session_name": "main_agent"
+      "zellij_session_name": "MAIN_AGENT"
     },
     {
       "name": "TEST_AGENT",
       "role": "Testing Specialist - System Validation & Quality Assurance",
       "category": "support",
-      "zellij_session_name": "test_agent"
+      "zellij_session_name": "TEST_AGENT"
     },
     {
       "name": "DATABASE_AGENT",
       "role": "Database Specialist - Schema, Migrations & Data Management",
       "category": "infrastructure",
-      "zellij_session_name": "database_agent"
+      "zellij_session_name": "DATABASE_AGENT"
     },
     {
       "name": "UI_AGENT",
       "role": "Web UI Specialist - Frontend Development & User Experience",
       "category": "infrastructure",
-      "zellij_session_name": "ui_agent"
+      "zellij_session_name": "UI_AGENT"
     }
   ]
 }

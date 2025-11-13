@@ -98,8 +98,8 @@ def main():
     print("  - Session names must match agent's zellij_session_name field")
     print()
     print("Example setup for CACS agents:")
-    print("  1. Open terminal, run: zellij --session main_agent")
-    print("  2. Open another terminal, run: zellij --session test_agent")
+    print("  1. Open terminal, run: zellij --session MAIN_AGENT")
+    print("  2. Open another terminal, run: zellij --session TEST_AGENT")
     print("  3. etc. for each agent")
     print()
     print("Alternative: Use zellij tabs/panes within a single session")
@@ -125,9 +125,9 @@ def main():
         print()
         print("Example manual test commands:")
         print("   # From outside Zellij, send text to a session:")
-        print('   zellij --session main_agent action write-chars "echo CACS_TEST"')
+        print('   zellij --session MAIN_AGENT action write-chars "echo CACS_TEST"')
         print("   # Send Enter key to execute:")
-        print('   zellij --session main_agent action write 13')
+        print('   zellij --session MAIN_AGENT action write 13')
         print()
         print("⚠️  SKIPPING automated command injection test")
         print("   (Cannot verify without user confirmation in active session)")
@@ -174,13 +174,13 @@ Key Findings for CACS Implementation:
 
 3. CACS Agent Activation Flow:
    Step 1: Check if agent's Zellij session exists
-           → zellij list-sessions | grep "main_agent"
+           → zellij list-sessions | grep "MAIN_AGENT"
    Step 2: If not exists → FAIL with error message
-           "Session 'main_agent' not found. Please start it first."
+           "Session 'MAIN_AGENT' not found. Please start it first."
    Step 3: Send activation command
-           → zellij --session main_agent action write-chars "cd SUBAGENTS/MAIN_AGENT && ..."
+           → zellij --session MAIN_AGENT action write-chars "cd SUBAGENTS/MAIN_AGENT && ..."
    Step 4: Execute the command
-           → zellij --session main_agent action write 13
+           → zellij --session MAIN_AGENT action write 13
 
 4. CRITICAL Requirements for Users:
    - Each agent MUST have a pre-existing Zellij session
@@ -190,9 +190,9 @@ Key Findings for CACS Implementation:
 
 5. Recommended User Setup:
    Option A: Multiple terminal windows
-     Terminal 1: zellij --session main_agent
-     Terminal 2: zellij --session test_agent
-     Terminal 3: zellij --session database_agent
+     Terminal 1: zellij --session MAIN_AGENT
+     Terminal 2: zellij --session TEST_AGENT
+     Terminal 3: zellij --session DATABASE_AGENT
      Terminal 4: Run CACS web UI
 
    Option B: Single Zellij session with tabs/panes
@@ -228,8 +228,8 @@ To validate Zellij command injection for CACS:
 5. If successful, CACS can activate agents using the same mechanism!
 
 Alternative test with agent sessions:
-   $ zellij --session main_agent action write-chars "cd SUBAGENTS/MAIN_AGENT && ls inbox"
-   $ zellij --session main_agent action write 13
+   $ zellij --session MAIN_AGENT action write-chars "cd SUBAGENTS/MAIN_AGENT && ls inbox"
+   $ zellij --session MAIN_AGENT action write 13
 
 If this works, you're ready for Phase 2 implementation! 🚀
 """)
